@@ -53,10 +53,11 @@ public class Login {
         } while (true);
     }
 
-    public void logging() {
+    public boolean logging() {
+        boolean log = false;
         do {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Wprowadz nazwe uzytkownika: \n \n(jesli chcesz wrocic do menu, wpisz 'q')");
+            System.out.println("Logowanie - Wprowadz nazwe uzytkownika: \n \n(jesli chcesz wrocic do menu, wpisz 'q')");
             String user = scanner.next();
 
             if (user.equals("q")) {
@@ -69,6 +70,7 @@ public class Login {
 
                 if (password.equals(encodedPassword)) {
                     System.out.println("Gratulacje! Zalogowales sie na konto: " + user);
+                    log = true;
                     break;
 
                 } else {
@@ -78,10 +80,11 @@ public class Login {
 
             } else {
                 System.out.println("nie ma takiego uzytkownika.");
-                continue;
+
             }
 
         } while (true);
+        return log;
     }
 }
 
