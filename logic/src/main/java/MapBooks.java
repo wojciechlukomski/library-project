@@ -6,15 +6,48 @@ import java.util.*;
 
 public class MapBooks {
     public static void main(String[] args) {
-
         // parsowanie z mapy do jsona za pomoca builderaGson
         Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create(); //zeby ladnie wyswietlalo
         String uniqueMapJson = gson.toJson(createUniqueListOfBooks());
         String mapJson = gson.toJson(createMap());
 
-        showUniqueBooks(uniqueMapJson);
+        menu();
+
+//        showUniqueBooks(uniqueMapJson);
 //        showAvailableBooks(mapJson);
     }
+
+    private static void menu() {
+        Login login = new Login();
+        Scanner scanner = new Scanner(System.in);
+        int option = 0;
+        System.out.println("Witaj w bibliotece online! Wybierz na klawiaturze wybrany numer dzialania;)");
+        while (option != 5) {
+            System.out.println("1. Stworz konto; 2. Kup książke; 3. Wypożycz książke; 4.Zwroc ksiazke; 5. Zakoncz dzialanie programu;");
+            option = scanner.nextInt();
+
+            switch (option) {
+                case 1:
+                    login.createUser();
+                    break;
+                case 2:
+                    login.logging();
+                    break;
+                case 3:
+                    System.out.println("podaj numer programu");
+                    int numer = scanner.nextInt();
+
+                    break;
+                case 4:
+                    System.out.println("sds");
+                    break;
+
+            }
+        }
+        scanner.close();
+        System.out.println("dzieki ze odwiedziles nasz program, do zobaczenia wkrotce :)");
+    }
+
 
     public static void showUniqueBooks(String uniqueMapJson) {
 
@@ -104,7 +137,8 @@ public class MapBooks {
 
         return map;
     }
-    public static Set<Book> createUniqueListOfBooks (){
+
+    public static Set<Book> createUniqueListOfBooks() {
 
         Set<Book> linkedHashSet = new LinkedHashSet<>(createMap().values());
 
